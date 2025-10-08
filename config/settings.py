@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "lms_db",
-        'USER': "lms_admin",
+        'NAME': "adminlms_db",
+        'USER': "lmss_admin",
         'PASSWORD': '9797',
         'HOST': '127.0.0.1',
         'PORT': '5432',

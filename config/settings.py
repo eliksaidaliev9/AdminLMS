@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import DATABASES
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,8 +80,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "adminlms_db",
-        'USER': "lmss_admin",
+        'NAME': 'adminlms_db',
+        'USER': 'lmss_admin',
         'PASSWORD': '9797',
         'HOST': '127.0.0.1',
         'PORT': '5432',

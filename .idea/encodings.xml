@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/adminapp/admin.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adminapp/apps.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adminapp/forms.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/adminapp/migrations/0001_initial.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adminapp/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adminapp/services.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adminapp/views.py" charset="UTF-8" />

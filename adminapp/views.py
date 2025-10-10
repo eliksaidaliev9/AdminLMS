@@ -59,6 +59,14 @@ def faculty_create(request):
     form = FacultyForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You created faculty: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
+        faculty_count = request.session.get('faculty_count', 0)
+        faculty_count += 1
+        request.session["faculty_count"] = faculty_count
         return redirect('faculty_list')
     ctx = {
         "model":model,
@@ -72,6 +80,14 @@ def faculty_edit(request,pk):
     form = FacultyForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited faculty: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
+        faculty_count = request.session.get('faculty_count', 0)
+        faculty_count += 1
+        request.session["faculty_count"] = faculty_count
         return redirect('faculty_list')
     ctx = {
         "model":model,
@@ -82,7 +98,17 @@ def faculty_edit(request,pk):
 @login_required_decorator
 def faculty_delete(request,pk):
     model = Faculty.objects.get(pk=pk)
+    faculty_name = model.name
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted faculty: {faculty_name}"]
+    request.session["actions"] = actions
+
+    faculty_count = request.session.get('faculty_count', 0)
+    if faculty_count > 0:
+        faculty_count -= 1
+        request.session["faculty_count"] = faculty_count
     return redirect('faculty_list')
 
 @login_required_decorator
@@ -129,6 +155,10 @@ def kafedra_edit(request,pk):
         actions = request.session.get('actions',[])
         actions += [f"You edited kafedra: {request.POST.get('name')}"]
         request.session["actions"] = actions
+
+        kafedra_count = request.session.get('kafedra_count', 0)
+        kafedra_count += 1
+        request.session["kafedra_count"] = kafedra_count
         return redirect('kafedra_list')
 
     ctx = {
@@ -140,7 +170,17 @@ def kafedra_edit(request,pk):
 @login_required_decorator
 def kafedra_delete(request,pk):
     model = Kafedra.objects.get(pk=pk)
+    kafedra_name = model.name
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted kafedra: {kafedra_name}"]
+    request.session["actions"] = actions
+
+    kafedra_count = request.session.get('kafedra_count', 0)
+    if kafedra_count > 0:
+        kafedra_count -= 1
+        request.session["kafedra_count"] = kafedra_count
     return redirect('kafedra_list')
 
 @login_required_decorator

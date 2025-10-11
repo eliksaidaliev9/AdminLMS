@@ -21,7 +21,7 @@ def login_page(request):
     if request.POST:
         username=request.POST.get('username')
         password=request.POST.get('password')
-        user = authenticate(request, password=password, username=username)
+        user = authenticate(request, username=username,  password=password,)
         if user is not None:
             login(request, user)
             return redirect("home_page")
@@ -85,9 +85,6 @@ def faculty_edit(request,pk):
         actions += [f"You edited faculty: {request.POST.get('name')}"]
         request.session["actions"] = actions
 
-        faculty_count = request.session.get('faculty_count', 0)
-        faculty_count += 1
-        request.session["faculty_count"] = faculty_count
         return redirect('faculty_list')
     ctx = {
         "model":model,
@@ -156,9 +153,6 @@ def kafedra_edit(request,pk):
         actions += [f"You edited kafedra: {request.POST.get('name')}"]
         request.session["actions"] = actions
 
-        kafedra_count = request.session.get('kafedra_count', 0)
-        kafedra_count += 1
-        request.session["kafedra_count"] = kafedra_count
         return redirect('kafedra_list')
 
     ctx = {
@@ -181,6 +175,7 @@ def kafedra_delete(request,pk):
     if kafedra_count > 0:
         kafedra_count -= 1
         request.session["kafedra_count"] = kafedra_count
+
     return redirect('kafedra_list')
 
 @login_required_decorator
@@ -198,6 +193,15 @@ def subject_create(request):
     form = SubjectForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You created subject: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
+        subject_count = request.session.get('subject_count', 0)
+        subject_count += 1
+        request.session["subject_count"] = subject_count
+
         return redirect('subject_list')
     ctx = {
         "model":model,
@@ -211,6 +215,11 @@ def subject_edit(request,pk):
     form = SubjectForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited subject: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
         return redirect('subject_list')
     ctx = {
         "model":model,
@@ -221,7 +230,18 @@ def subject_edit(request,pk):
 @login_required_decorator
 def subject_delete(request,pk):
     model = Subject.objects.get(pk=pk)
+    subject_name = model.name
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted subject: {subject_name}"]
+    request.session["actions"] = actions
+
+    subject_count = request.session.get('subject_count', 0)
+    if subject_count > 0:
+        subject_count -= 1
+        request.session["subject_count"] = subject_count
+
     return redirect('subject_list')
 
 @login_required_decorator
@@ -239,9 +259,14 @@ def teacher_create(request):
     form = TeacherForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
         actions = request.session.get('actions',[])
-        actions += [f"You added teacher: {request.POST.get('first_name')}"]
+        actions += [f"You created teacher: {request.POST.get('first_name')} {request.POST.get('last_name')}"]
         request.session["actions"] = actions
+
+        teacher_count = request.session.get('teacher_count', 0)
+        teacher_count += 1
+        request.session["teacher_count"] = teacher_count
 
         return redirect('teacher_list')
     ctx = {
@@ -256,6 +281,11 @@ def teacher_edit(request,pk):
     form = TeacherForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited teacher: {request.POST.get('first_name')} {request.POST.get('last_name')}"]
+        request.session["actions"] = actions
+
         return redirect('teacher_list')
     ctx = {
         "model":model,
@@ -266,7 +296,18 @@ def teacher_edit(request,pk):
 @login_required_decorator
 def teacher_delete(request,pk):
     model = Teacher.objects.get(pk=pk)
+    teacher_name = f"{model.first_name} {model.last_name}"
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted teacher: {teacher_name}"]
+    request.session["actions"] = actions
+
+    teacher_count = request.session.get('teacher_count', 0)
+    if teacher_count > 0:
+        teacher_count -= 1
+        request.session["teacher_count"] = teacher_count
+
     return redirect('teacher_list')
 
 @login_required_decorator
@@ -284,6 +325,15 @@ def group_create(request):
     form = GroupForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You created group: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
+        group_count = request.session.get('group_count', 0)
+        group_count += 1
+        request.session["group_count"] = group_count
+
         return redirect('group_list')
     ctx = {
         "model":model,
@@ -297,6 +347,11 @@ def group_edit(request,pk):
     form = GroupForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited group: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
         return redirect('group_list')
     ctx = {
         "model":model,
@@ -307,7 +362,18 @@ def group_edit(request,pk):
 @login_required_decorator
 def group_delete(request,pk):
     model = Group.objects.get(pk=pk)
+    group_name = model.name
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted group: {group_name}"]
+    request.session["actions"] = actions
+
+    group_count = request.session.get('group_count', 0)
+    if group_count > 0:
+        group_count -= 1
+        request.session["group_count"] = group_count
+
     return redirect('group_list')
 
 @login_required_decorator
@@ -325,6 +391,15 @@ def student_create(request):
     form = StudentForm(request.POST or None, request.FILES or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You created student: {request.POST.get('first_name')} {request.POST.get('last_name')}"]
+        request.session["actions"] = actions
+
+        student_count = request.session.get('student_count', 0)
+        student_count += 1
+        request.session["student_count"] = student_count
+
         return redirect('student_list')
     ctx = {
         "model":model,
@@ -338,6 +413,11 @@ def student_edit(request,pk):
     form = StudentForm(request.POST or None,request.FILES or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited student: {request.POST.get('first_name')} {request.POST.get('last_name')}"]
+        request.session["actions"] = actions
+
         return redirect('student_list')
     ctx = {
         "model":model,
@@ -348,7 +428,18 @@ def student_edit(request,pk):
 @login_required_decorator
 def student_delete(request,pk):
     model = Student.objects.get(pk=pk)
+    student_name = f"{model.first_name} {model.last_name}"
     model.delete()
+
+    actions = request.session.get('actions', [])
+    actions += [f"You deleted student: {student_name}"]
+    request.session["actions"] = actions
+
+    student_count = request.session.get('student_count', 0)
+    if student_count > 0:
+        student_count -= 1
+        request.session["student_count"] = student_count
+
     return redirect('student_list')
 
 @login_required_decorator

@@ -1,19 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'adminapp/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Last Actions</h2>
+<div class="page-container">
+    <!-- HEADER DESKTOP -->
+    {% include 'adminapp/userbar.html' %}
+    <!-- END HEADER DESKTOP -->
 
-    {% if actions %}
-        <ul class="list-group">
-            {% for act in actions %}
-                <li class="list-group-item">{{ act }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No recent actions.</p>
-    {% endif %}
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
 
-    <a href="{% url 'profile' %}" class="btn btn-secondary mt-3">Back to Profile</a>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="title-1">Last Actions</h2>
+                    <a href="{% url 'profile' %}" class="btn btn-secondary">← Back to Profile</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        {% if actions %}
+                            <ul class="list-group">
+                                {% for act in actions %}
+                                    <li class="list-group-item">{{ act }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="alert alert-info">No recent actions.</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
 </div>
 {% endblock %}

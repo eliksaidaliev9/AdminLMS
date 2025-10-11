@@ -453,3 +453,8 @@ def student_list(request):
 @login_required_decorator
 def profile(request):
     return render(request,'profile.html')
+
+@login_required_decorator
+def last_actions_view(request):
+    actions = request.session.get('actions', [])
+    return render(request, 'last_actions.html', {'actions': actions})

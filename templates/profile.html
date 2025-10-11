@@ -11,17 +11,19 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="overview-wrap">
-                            <h2 class="title-1">Username: {{ request.user.username }}</h2>
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <div class="overview-wrap">-->
+<!--                            <h2 class="title-1">Username: {{ request.user.username }}</h2>-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2 class="title-1">Username: {{ request.user.username }}</h2>
+                                <a href="{% url 'last_actions' %}" class="btn btn-primary">Last Actions</a>
+                            </div>
+                        </div>
+                    </div>
 
-                            {# Agar kerak bo‘lsa "Add" tugmasini quyidagi shaklda oching #}
-                            {#
-                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'teacher_create' %}">
-                                <i class="zmdi zmdi-plus"></i> Add
-                            </a>
-                            #}
                         </div>
                     </div>
                 </div>
@@ -29,16 +31,32 @@
 
                 <div class="row">
                     <!-- LAST ACTIONS -->
-                    <div class="col-sm-6 col-lg-4">
-                        <h2>Last actions:</h2>
-                        {% if request.session.actions %}
-                            {% for act in request.session.actions %}
-                                <div class="row">{{ act }}</div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="row">No recent actions.</div>
-                        {% endif %}
-                    </div>
+<!--                    <div class="col-sm-6 col-lg-4">-->
+<!--                        <h2>Last actions:</h2>-->
+<!--                        {% if request.session.actions %}-->
+<!--                            {% for act in request.session.actions %}-->
+<!--                                <div class="row">{{ act }}</div>-->
+<!--                            {% endfor %}-->
+<!--                        {% else %}-->
+<!--                            <div class="row">No recent actions.</div>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-6 col-lg-4">-->
+<!--                        &lt;!&ndash; Toggle button &ndash;&gt;-->
+<!--                        <button id="toggle-actions-btn" class="btn btn-primary mb-3">Show Last Actions</button>-->
+
+<!--                        &lt;!&ndash; Last Actions block, boshida yashirilgan &ndash;&gt;-->
+<!--                        <div id="last-actions-block" style="display:none;">-->
+<!--                            {% if request.session.actions %}-->
+<!--                                {% for act in request.session.actions %}-->
+<!--                                    <div class="row">{{ act }}</div>-->
+<!--                                {% endfor %}-->
+<!--                            {% else %}-->
+<!--                                <div class="row">No recent actions.</div>-->
+<!--                            {% endif %}-->
+<!--                        </div>-->
+<!--                     </div>-->
 
                     <!-- FACULTY COUNT -->
                     <div class="col-sm-6 col-lg-4">
@@ -47,7 +65,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.faculty_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.faculty_count }}</h2>
                                         <span>Faculty</span>
                                     </div>
                                 </div>
@@ -62,7 +80,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.kafedra_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.kafedra_count }}</h2>
                                         <span>Kafedra</span>
                                     </div>
                                 </div>
@@ -77,7 +95,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.subject_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.subject_count }}</h2>
                                         <span>Subject</span>
                                     </div>
                                 </div>
@@ -92,7 +110,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.teacher_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.teacher_count }}</h2>
                                         <span>Teacher</span>
                                     </div>
                                 </div>
@@ -107,7 +125,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.group_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.group_count }}</h2>
                                         <span>Group</span>
                                     </div>
                                 </div>
@@ -122,7 +140,7 @@
                                 <div class="overview-box clearfix">
                                     <div class="icon"><i class="fa fa-bank"></i></div>
                                     <div class="text">
-                                        <h2>{{ request.session.student_count|default:"0" }}</h2>
+                                        <h2>{{ request.session.student_count }}</h2>
                                         <span>Student</span>
                                     </div>
                                 </div>
@@ -132,6 +150,26 @@
 
                 </div> <!-- end row -->
 
+<!--                <script>-->
+<!--                document.addEventListener('DOMContentLoaded', function() {-->
+<!--                    const btn = document.getElementById('toggle-actions-btn');-->
+<!--                    const block = document.getElementById('last-actions-block');-->
+
+<!--                    btn.addEventListener('click', function() {-->
+<!--                        if (block.style.display === 'none') {-->
+<!--                            block.style.display = 'block';-->
+<!--                            btn.textContent = 'Hide Last Actions';-->
+<!--                        } else {-->
+<!--                            block.style.display = 'none';-->
+<!--                            btn.textContent = 'Show Last Actions';-->
+<!--                        }-->
+<!--                    });-->
+<!--                });-->
+<!--            </script>-->
+
+<!--                    <div class="mt-4">-->
+<!--                        <a href="{% url 'last_actions' %}" class="btn btn-primary">Last Actions</a>-->
+<!--                    </div>-->
             </div> <!-- end container-fluid -->
         </div> <!-- end section content -->
     </div> <!-- end main content -->

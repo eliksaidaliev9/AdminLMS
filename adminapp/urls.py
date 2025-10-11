@@ -7,6 +7,8 @@ urlpatterns = [
     path('logout_page/',logout_page, name='logout_page'),
     path('signup/', SignUpView.as_view(), name='signup'),
 
+    path('last-actions/', last_actions_view, name='last_actions'),
+
     path('faculty/create/',faculty_create, name='faculty_create'),
     path('faculty/<int:pk>/edit/',faculty_edit, name='faculty_edit'),
     path('faculty/<int:pk>/delete/',faculty_delete, name='faculty_delete'),

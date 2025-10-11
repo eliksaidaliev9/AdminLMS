@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Last Actions</h2>
+
+    {% if actions %}
+        <ul class="list-group">
+            {% for act in actions %}
+                <li class="list-group-item">{{ act }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recent actions.</p>
+    {% endif %}
+
+    <a href="{% url 'profile' %}" class="btn btn-secondary mt-3">Back to Profile</a>
+</div>
+{% endblock %}

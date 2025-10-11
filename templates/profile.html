@@ -24,7 +24,9 @@
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.faculty_count }}</h2>
                                         <span>Faculty</span>
@@ -52,7 +54,9 @@
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.kafedra_count }}</h2>
                                         <span>Kafedra</span>
@@ -80,7 +84,9 @@
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.subject_count }}</h2>
                                         <span>Subject</span>
@@ -102,14 +108,16 @@
                             </div>
                         </div>
                     </div>
-
-
+                </div>
+                <div class="row m-t-25">
                     <!-- TEACHER COUNT -->
                     <div class="col-sm-6 col-lg-4">
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.teacher_count }}</h2>
                                         <span>Teacher</span>
@@ -131,13 +139,14 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- GROUP COUNT -->
                     <div class="col-sm-6 col-lg-4">
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.group_count }}</h2>
                                         <span>Group</span>
@@ -165,7 +174,9 @@
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
-                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </div>
                                     <div class="text">
                                         <h2>{{ request.session.student_count }}</h2>
                                         <span>Student</span>
@@ -187,7 +198,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
 
+                        <div class="col-lg-6">
+                            <div class="au-card m-b-30">
+                                <div class="au-card-inner">
+                                    <h3 class="title-2 m-b-40">Single Bar Chart</h3>
+                                    <canvas id="singelBarChart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="au-card m-b-30">
+                                <div class="au-card-inner">
+                                    <h3 class="title-2 m-b-40">Pie Chart</h3>
+                                    <canvas id="pieChart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
                 </div> <!-- end row -->
 
             </div> <!-- end container-fluid -->

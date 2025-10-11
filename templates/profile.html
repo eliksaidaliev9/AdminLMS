@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="overview-wrap">
+                        <div class="d-flex justify-content-between align-items-center">
                             <h2 class="title-1">Username: {{ request.user.username }}</h2>
                             <a href="{% url 'last_actions' %}" class="btn btn-secondary btn-lg">Show Last Actions</a>
                         </div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="row m-t-25">
                     <!-- FACULTY COUNT -->
-                    <div class="col-sm-6 col-lg-3">
+                    <div class="col-sm-6 col-lg-4">
                         <div class="overview-item overview-item--c1">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">

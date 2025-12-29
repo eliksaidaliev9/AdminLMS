@@ -33,7 +33,7 @@
 
 • Backend: Python, Django
 
-• Frontend: HTML, CSS, Django Templates
+• Frontend: HTML, CSS, JavaScript
 
 • Database: PostgreSQL / SQLite
 
@@ -62,13 +62,7 @@
 
 # 🔐 Security Notice
 
-**For security reasons:**
-
-database credentials
-
-database port
-
-sensitive configuration values
+• For security reasons database credentials, database ports, and other sensitive configuration values are not stored in the repository and must be provided via environment variables.
 
 # 🤝 Contributing
 

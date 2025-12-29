@@ -29,14 +29,38 @@
 
 # 🛠 Tech Stack
 
-The project is built using the following technologies:
+**The project is built using the following technologies:**
 
-Backend: Python, Django
+• Backend: Python, Django
 
-Frontend: HTML, CSS, Django Templates
+• Frontend: HTML, CSS, Django Templates
 
-Database: PostgreSQL / SQLite
+• Database: PostgreSQL / SQLite
 
-Static & Media: Django static & media files
+• Static & Media: Django static & media files
 
-Version Control: Git & GitHub
+• Version Control: Git & GitHub
+
+# ⚙️ Installation (Local Setup)
+• git clone https://github.com/eliksaidaliev9/AdminLMS.git
+• cd AdminLMS
+• python -m venv venv
+• venv\Scripts\activate 
+• pip install -r requirements.txt
+• python manage.py migrate
+• python manage.py runserver
+
+**Open in browser:**
+
+👉 http://127.0.0.1:8000/
+
+# 🔐 Security Notice
+
+**For security reasons:**
+
+database credentials
+
+database port
+
+sensitive configuration values
+

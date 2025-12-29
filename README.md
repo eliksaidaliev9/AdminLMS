@@ -43,11 +43,17 @@
 
 # ⚙️ Installation (Local Setup)
 • git clone https://github.com/eliksaidaliev9/AdminLMS.git
+
 • cd AdminLMS
+
 • python -m venv venv
+
 • venv\Scripts\activate 
+
 • pip install -r requirements.txt
+
 • python manage.py migrate
+
 • python manage.py runserver
 
 **Open in browser:**
@@ -64,3 +70,8 @@ database port
 
 sensitive configuration values
 
+# 🤝 Contributing
+
+• Contributions are welcome!
+
+• Feel free to open issues or submit pull requests to improve the project.
